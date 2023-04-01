@@ -14,7 +14,7 @@ class Film(models.Model):
         return self.title
 
     class Meta:
-        ordering = ['clicks']
+        ordering = ['release_date']
 
 
 class Comment(models.Model):
