@@ -88,7 +88,7 @@ WSGI_APPLICATION = 'starwars.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'starwars',
+        'NAME': 'railway',
         'USER': os.environ.get('DB-USER'),
         'PASSWORD': os.environ.get('DB-PASSWORD'),
         'HOST': os.environ.get('DB-HOST'),
