@@ -68,14 +68,14 @@ class FilmComment(APIView):
                 return Response({'Success': True, 'message': 'comment created'}, status=status.HTTP_201_CREATED)
             except ObjectDoesNotExist:
                 return Response({'Success': False, 'message': 'Film does not exist'}, status=status.HTTP_404_NOT_FOUND)
-        return Response({'Success': False, 'message': 'Comment length is invalid'}, status=status.HTTP_404_NOT_FOUND)
+        return Response({'Success': False, 'message': 'Comment length is invalid'}, status=status.HTTP_400_BAD_REQUEST)
     def get(self, request, id):
         try:
             film = Film.objects.get(id=id)
             comments = Comment.objects.filter(film__id=film.id)
             serializer = GetCommentSerializer(comments, many=True)
             comment_list = serializer.data
-            return Response({'Success': True, 'data': comment_list}, status=status.HTTP_201_CREATED)
+            return Response({'Success': True, 'data': comment_list}, status=status.HTTP_200_OK)
         except ObjectDoesNotExist:
             return Response({'Success': False, 'message': 'Film does not exist'}, status=status.HTTP_404_NOT_FOUND)
 
