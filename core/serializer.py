@@ -15,7 +15,7 @@ class FilmCreationSerializer(serializers.ModelSerializer):
         fields = ('title', 'episode_id', 'release_date',)
 
 
-class CommentSerializer(serializers.ModelSerializer):
+class GetCommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
         fields = ('id', 'film', 'comment', 'created_at')
