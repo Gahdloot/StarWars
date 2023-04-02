@@ -25,6 +25,9 @@ class Comment(models.Model):
     def __str__(self):
         return self.comment
 
+    class Meta:
+        ordering = ['created_at']
+
     def save(self, *args, **kwargs):
         film = Film.objects.get(id=self.film.id)
         film.comment_count += 1
