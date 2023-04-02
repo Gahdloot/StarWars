@@ -18,4 +18,4 @@ class FilmCreationSerializer(serializers.ModelSerializer):
 class GetCommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
-        fields = ('id', 'film', 'comment', 'created_at')
+        fields = ('id', 'title', 'comment', 'created_at')
