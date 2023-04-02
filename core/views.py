@@ -58,6 +58,13 @@ class FilmComment(APIView):
                 film = Film.objects.get(id=id)
                 comment = Comment(film=film, comment=request.data['comment'])
                 comment.save()
+                query = Film.objects.all()
+                query = FilmSerializer(query, many=True)
+                film_list = query.data
+                films = film_list
+                cache_key = 'films_list'
+                """Set Cache"""
+                cache.set(cache_key, films, 60 * 60 * 24)
                 return Response({'Success': True, 'message': 'comment created'}, status=status.HTTP_201_CREATED)
             except ObjectDoesNotExist:
                 return Response({'Success': False, 'message': 'Film does not exist'}, status=status.HTTP_404_NOT_FOUND)
